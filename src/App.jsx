@@ -196,7 +196,7 @@ export default function App() {
             
             <div className="w-full max-w-[280px] mx-auto mb-10 relative">
               <div className="absolute inset-0 bg-[#d4af37] blur-[30px] opacity-20 rounded-full"></div>
-              <img src="/src/slcouple.jpg" alt="Couple" className="w-full h-auto relative z-10 drop-shadow-2xl" />
+              <img src="https://github.com/inukatechyt/wedding-invite01/blob/main/src/slcouple.jpg" alt="Couple" className="w-full h-auto relative z-10 drop-shadow-2xl" />
             </div>
 
             <h1 className="text-5xl font-serif text-[#3e271a] mb-2 tracking-wide">Inuka</h1>
