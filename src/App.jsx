@@ -124,7 +124,7 @@ export default function App() {
   const handleRSVP = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    const waNum = "94771234567"; 
+    const waNum = "94702619911"; 
     const text = `*Wedding Invitation Reply*%0A%0A*Guest Name:* ${form.get('name')}%0A*Contact:* ${form.get('phone')}%0A*Status:* ${attendance === 'yes' ? 'Joyfully Accepts 🎉' : 'Regretfully Declines 😔'}`;
     window.open(`https://wa.me/${waNum}?text=${text}`, '_blank');
   };
@@ -268,7 +268,7 @@ export default function App() {
               {isMapOpen && (
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                   <div className="w-full h-80 bg-gray-900 rounded-[2.5rem] overflow-hidden shadow-2xl mb-8 border-[4px] border-white/10">
-                    <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.676646872583!2d79.84157157500588!3d6.929215093069818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25925a259b1db%3A0xc6bf31b87b7a2d61!2sHilton%20Colombo!5e0!3m2!1sen!2slk!4v1714018800000!5m2!1sen!2slk" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
+                    <iframe title="Map" src="https://www.google.com/maps/place/Hilton+Colombo/data=!4m10!3m9!1s0x3ae259132e85493d:0x9d5e04ea64814a8!5m2!4m1!1i2!8m2!3d6.9325497!4d79.8447402!16s%2Fg%2F1vn_xd7b!19sChIJPUmFLhNZ4joRqBRIpk7g1Qk?authuser=0&hl=en&rclk=1" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
                   </div>
                   <a href="https://maps.app.goo.gl/placeholderlink" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-gradient-to-r from-[#d4af37] to-[#aa7c11] text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 mb-4">
                     <MapPin size={18} /> Open in Google Maps
