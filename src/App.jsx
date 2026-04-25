@@ -319,7 +319,7 @@ export default function App() {
           <p className="text-[10px] text-white/40 uppercase tracking-widest mb-4 font-bold">© 2026 All rights reserved</p>
           <div className="flex items-center justify-center gap-2 text-[10px] text-white/50">
             <span>Powered By</span>
-            <a href="https://inukatech.com" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
+            <a href="https://inukatechyt.github.io/inuka_tech/" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
               Inuka Tech
             </a>
           </div>
