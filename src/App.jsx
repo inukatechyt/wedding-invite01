@@ -138,7 +138,7 @@ export default function App() {
   const handleRSVP = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    const waNum = "94771234567"; 
+    const waNum = "94702619911"; 
     const text = `*Wedding Invitation Reply*%0A%0A*Guest Name:* ${form.get('name')}%0A*Contact:* ${form.get('phone')}%0A*Status:* ${attendance === 'yes' ? 'Joyfully Accepts 🎉' : 'Regretfully Declines 😔'}%0A*No. of Guests:* ${guestCount}`;
     window.open(`https://wa.me/${waNum}?text=${text}`, '_blank');
   };
