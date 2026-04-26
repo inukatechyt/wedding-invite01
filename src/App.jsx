@@ -50,7 +50,7 @@ const PalaceGate = ({ onOpen }) => (
     <motion.div exit={{ scale: 0, opacity: 0, transition: { duration: 0.6, ease: "backIn" } }} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
       <button onClick={onOpen} className="relative group w-44 h-44 flex flex-col items-center justify-center bg-gradient-to-br from-[#2c1a12] to-[#1a0f0a] rounded-full shadow-[0_0_80px_rgba(212,175,55,0.6)] border-[4px] border-[#d4af37] cursor-pointer hover:scale-110 transition-all duration-500 overflow-hidden">
         <motion.div animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[2px] border-dashed border-[#d4af37]/50 rounded-full scale-90"></motion.div>
-        <h2 className="text-3xl font-serif text-[#d4af37] font-bold z-10 mb-1 drop-shadow-lg">I <span className="text-white text-xl">&</span> I</h2>
+        <h2 className="text-3xl font-serif text-[#d4af37] font-bold z-10 mb-1 drop-shadow-lg">S <span className="text-white text-xl">&</span> C</h2>
         <p className="text-white/80 uppercase tracking-[0.3em] text-[9px] font-bold z-10 mt-4 flex items-center gap-1 animate-pulse">
           <Sparkles size={12} className="text-[#d4af37]" /> Enter
         </p>
