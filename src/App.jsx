@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Clock, Calendar, Heart, Map as MapIcon, Mail, Sparkles, Star, Users } from 'lucide-react';
+import { MapPin, Calendar, Map as MapIcon, Sparkles, Star } from 'lucide-react';
 
 // --- 1. TRADITIONAL SRI LANKAN LOTUS MOTIF (සාම්ප්‍රදායික මෝස්තරය) ---
 const TraditionalLotus = ({ className }) => (
@@ -74,49 +74,12 @@ const FlipUnit = ({ value, label }) => (
   </motion.div>
 );
 
-// --- 5. PRE-SHOOT CAROUSEL WITH ANIMATIONS ---
-const ImageCarousel = () => {
-  const images = ["/01.jpg", "/02.jpg", "/03.jpg", "/04.jpg"];
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => setIdx((p) => (p === images.length - 1 ? 0 : p + 1)), 3500);
-    return () => clearInterval(timer);
-  }, [images.length]);
-
-  return (
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.9 }} 
-      whileInView={{ opacity: 1, scale: 1 }} 
-      transition={{ duration: 1, type: "spring" }} 
-      viewport={{ once: true }}
-      className="relative w-full max-w-[320px] mx-auto h-[450px] rounded-[3rem] overflow-hidden shadow-[0_0_50px_rgba(212,175,55,0.2)] border-[4px] border-[#d4af37]/30 bg-black/40 backdrop-blur-sm group"
-    >
-      <AnimatePresence mode="wait">
-        <motion.img 
-          key={idx} 
-          src={images[idx]} 
-          initial={{ opacity: 0, scale: 1.1, filter: "blur(4px)" }} 
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }} 
-          exit={{ opacity: 0, scale: 0.95 }} 
-          transition={{ duration: 1.2, ease: "easeInOut" }} 
-          className="absolute inset-0 w-full h-full object-cover" 
-        />
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-    </motion.div>
-  );
-};
-
-// --- 6. MAIN APP COMPONENT ---
+// --- 5. MAIN APP COMPONENT ---
 export default function App() {
   const [isGateOpen, setIsGateOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [guestName, setGuestName] = useState('Our Beloved Guest'); 
-  const [attendance, setAttendance] = useState('yes');
-  const [guestCount, setGuestCount] = useState('1');
   const [isMapOpen, setIsMapOpen] = useState(false);
-  const [isRSVPOpen, setIsRSVPOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -125,7 +88,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const target = new Date("May 12, 2026 18:00:00").getTime();
+    const target = new Date("May 16, 2026 18:00:00").getTime();
     const interval = setInterval(() => {
       const distance = target - new Date().getTime();
       if (distance > 0) {
@@ -134,14 +97,6 @@ export default function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleRSVP = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    const waNum = "94702619911"; 
-    const text = `*Wedding Invitation Reply*%0A%0A*Guest Name:* ${form.get('name')}%0A*Contact:* ${form.get('phone')}%0A*Status:* ${attendance === 'yes' ? 'Joyfully Accepts 🎉' : 'Regretfully Declines 😔'}%0A*No. of Guests:* ${guestCount}`;
-    window.open(`https://wa.me/${waNum}?text=${text}`, '_blank');
-  };
 
   const fadeUpBounce = {
     hidden: { opacity: 0, y: 80, scale: 0.95 },
@@ -176,7 +131,7 @@ export default function App() {
             <h1 className="text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-10 tracking-wider">Paboda</h1>
             
             <div className="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 inline-block">
-              <p className="text-white tracking-[0.3em] text-[12px] font-bold uppercase">May 12 . 2026</p>
+              <p className="text-white tracking-[0.3em] text-[12px] font-bold uppercase">May 16 . 2026</p>
             </div>
           </motion.div>
         </section>
@@ -192,14 +147,6 @@ export default function App() {
               <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-8"></div>
               <h3 className="font-serif text-2xl text-[#d4af37]">Tharindu & Paboda</h3>
            </motion.div>
-        </section>
-
-        {/* --- CAROUSEL GALLERY --- */}
-        <section className="py-16 px-6 text-center relative z-10">
-          <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 className="text-[12px] tracking-[0.4em] text-[#d4af37] uppercase mb-12 font-bold drop-shadow-md">Beautiful Memories</h2>
-            <ImageCarousel />
-          </motion.div>
         </section>
 
         {/* --- COUNTDOWN --- */}
@@ -220,7 +167,7 @@ export default function App() {
           <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 className="text-4xl font-serif text-white mb-4">Venue</h2>
             <p className="text-[#d4af37] text-sm mb-2 font-bold uppercase tracking-widest">Shiney Lake Side, Hikkaduwa</p>
-            <p className="text-white/80 text-xs mb-12 uppercase tracking-widest">6:00 PM to 11:00 PM</p>
+            <p className="text-white/80 text-[11px] mb-12 uppercase tracking-widest font-bold">6:00 PM to 11:00 PM</p>
             
             <button onClick={() => setIsMapOpen(!isMapOpen)} className="flex items-center justify-center gap-3 w-full mx-auto py-5 bg-transparent border-[2px] border-[#d4af37] text-[#d4af37] rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#d4af37] hover:text-black transition-all duration-300 mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
               <MapIcon size={18} /> {isMapOpen ? 'Hide Map' : 'Show Map'}
@@ -239,65 +186,6 @@ export default function App() {
                   <a href="https://maps.app.goo.gl/placeholderlink" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-gradient-to-r from-[#d4af37] to-[#aa7c11] text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 mb-4">
                     <MapPin size={18} /> Open in Google Maps
                   </a>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </section>
-
-        {/* --- RSVP FORM --- */}
-        <section className="py-24 px-8 relative z-10">
-          <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative z-10">
-            <h2 className="text-4xl font-serif text-center text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-4">Please Confirm</h2>
-            <p className="text-center text-[10px] text-white/60 mb-12 uppercase tracking-[0.3em] font-bold">Kindly respond by May 01, 2026</p>
-            
-            <button onClick={() => setIsRSVPOpen(!isRSVPOpen)} className="flex items-center justify-center gap-3 w-full py-5 bg-gradient-to-r from-[#d4af37] to-[#aa7c11] text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300">
-              <Mail size={18} /> {isRSVPOpen ? 'Close Form' : 'Click to RSVP'}
-            </button>
-
-            <AnimatePresence>
-              {isRSVPOpen && (
-                <motion.div initial={{ height: 0, opacity: 0, scale: 0.95 }} animate={{ height: 'auto', opacity: 1, scale: 1, marginTop: '2.5rem' }} exit={{ height: 0, opacity: 0, scale: 0.95, marginTop: 0 }} className="overflow-hidden">
-                  <form onSubmit={handleRSVP} className="space-y-6 bg-white/10 backdrop-blur-2xl p-8 rounded-[2.5rem] border border-white/20 shadow-2xl">
-                    
-                    {/* Attendance Buttons */}
-                    <div>
-                      <label className="block text-[10px] font-bold text-[#d4af37] uppercase tracking-[0.2em] mb-4 text-center">Will You Attend?</label>
-                      <div className="flex gap-4">
-                        <button type="button" onClick={() => setAttendance('yes')} className={`flex-1 py-4 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all border-2 ${attendance === 'yes' ? 'bg-[#d4af37] text-black border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.4)]' : 'bg-transparent text-white/70 border-white/20'}`}>Accept</button>
-                        <button type="button" onClick={() => setAttendance('no')} className={`flex-1 py-4 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all border-2 ${attendance === 'no' ? 'bg-[#d4af37] text-black border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.4)]' : 'bg-transparent text-white/70 border-white/20'}`}>Decline</button>
-                      </div>
-                    </div>
-
-                    {/* Inputs */}
-                    <div>
-                      <input type="text" name="name" defaultValue={guestName !== 'Our Beloved Guest' ? guestName : ''} required className="w-full px-6 py-4 bg-black/40 border border-white/20 rounded-full focus:outline-none focus:border-[#d4af37] text-white text-sm placeholder-white/40 text-center transition-all" placeholder="Full Name" />
-                    </div>
-                    <div>
-                      <input type="tel" name="phone" required className="w-full px-6 py-4 bg-black/40 border border-white/20 rounded-full focus:outline-none focus:border-[#d4af37] text-white text-sm placeholder-white/40 text-center transition-all" placeholder="Contact Number" />
-                    </div>
-
-                    {/* Guest Count Selection */}
-                    <AnimatePresence>
-                      {attendance === 'yes' && (
-                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
-                          <label className="block text-[10px] font-bold text-[#d4af37] uppercase tracking-[0.2em] mb-3 text-center flex items-center justify-center gap-2"><Users size={12}/> Number of Guests</label>
-                          <select 
-                            value={guestCount} 
-                            onChange={(e) => setGuestCount(e.target.value)}
-                            className="w-full px-6 py-4 bg-black/40 border border-white/20 rounded-full focus:outline-none focus:border-[#d4af37] text-white text-sm text-center transition-all appearance-none cursor-pointer"
-                          >
-                            <option value="1">1 Guest (Only Me)</option>
-                            <option value="2">2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4+ Guests</option>
-                          </select>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                    <button type="submit" className="w-full py-5 bg-white text-black font-bold tracking-[0.2em] uppercase rounded-full hover:bg-gray-200 transition-all duration-300 shadow-xl text-xs">Send via WhatsApp</button>
-                  </form>
                 </motion.div>
               )}
             </AnimatePresence>
