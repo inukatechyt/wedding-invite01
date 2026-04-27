@@ -76,7 +76,7 @@ const FlipUnit = ({ value, label }) => (
 
 // --- 5. PRE-SHOOT CAROUSEL WITH ANIMATIONS ---
 const ImageCarousel = () => {
-  const images = ["/01.jpg", "/02.jpg", "/03.jpg", "/04.jpg"]; // Pulled from public folder
+  const images = ["/01.jpg", "/02.jpg", "/03.jpg", "/04.jpg"];
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
@@ -125,7 +125,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const target = new Date("May 16, 2026 18:00:00").getTime();
+    const target = new Date("May 12, 2026 18:00:00").getTime();
     const interval = setInterval(() => {
       const distance = target - new Date().getTime();
       if (distance > 0) {
@@ -176,7 +176,7 @@ export default function App() {
             <h1 className="text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-10 tracking-wider">Paboda</h1>
             
             <div className="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 inline-block">
-              <p className="text-white tracking-[0.3em] text-[12px] font-bold uppercase">May 16 . 2026</p>
+              <p className="text-white tracking-[0.3em] text-[12px] font-bold uppercase">May 12 . 2026</p>
             </div>
           </motion.div>
         </section>
@@ -194,46 +194,11 @@ export default function App() {
            </motion.div>
         </section>
 
-        {/* --- OUR STORY (Line Removed, Floating Cards) --- */}
-        <section className="py-24 px-8 relative z-10">
-          <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 className="text-4xl font-serif text-center text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-16">Our Story</h2>
-            <div className="space-y-6">
-              {[
-                { title: "First Met", desc: "We met in an unexpected way, and it turned into the most beautiful chapter.", date: "August 2020", icon: <Heart size={16} className="text-white" /> },
-                { title: "First Date", desc: "A simple coffee turned into hours of endless conversations.", date: "October 2020", icon: <Heart size={16} className="text-white" /> },
-                { title: "He Proposed", desc: "A magical moment when two souls promised to be one forever.", date: "December 2025", icon: <Sparkles size={16} className="text-[#d4af37]" /> }
-              ].map((item, index) => (
-                <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.2 }} viewport={{ once: true }} className="relative z-10 py-8 flex flex-col items-center text-center px-6 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 hover:border-[#d4af37]/50 transition-colors shadow-2xl">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#d4af37] to-[#8a6528] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.5)] mb-6 ring-4 ring-white/10">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-2xl font-serif text-white mb-3">{item.title}</h3>
-                  <p className="text-xs text-white/60 leading-relaxed mb-4">{item.desc}</p>
-                  <div className="bg-[#d4af37]/10 border border-[#d4af37]/30 px-4 py-1.5 rounded-full">
-                    <p className="text-[10px] text-[#d4af37] font-bold uppercase tracking-[0.2em]">{item.date}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-
         {/* --- CAROUSEL GALLERY --- */}
         <section className="py-16 px-6 text-center relative z-10">
           <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 className="text-[12px] tracking-[0.4em] text-[#d4af37] uppercase mb-12 font-bold drop-shadow-md">Beautiful Memories</h2>
             <ImageCarousel />
-          </motion.div>
-        </section>
-
-        {/* --- DRESS CODE SECTION --- */}
-        <section className="py-20 px-8 text-center relative z-10 bg-gradient-to-b from-transparent via-[#1a0f0a]/60 to-transparent border-y border-white/5">
-          <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col items-center">
-            <TraditionalLotus className="w-10 h-10 text-[#d4af37] mb-6" />
-            <h2 className="text-3xl font-serif text-white mb-4">Dress Code</h2>
-            <p className="text-[#d4af37] text-sm uppercase tracking-widest font-bold mb-2">සාම්ප්‍රදායික හෝ විධිමත්</p>
-            <p className="text-xs text-white/60 font-light">Traditional or Formal Attire</p>
           </motion.div>
         </section>
 
@@ -250,34 +215,12 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* --- TIMELINE --- */}
-        <section className="py-24 px-8 relative z-10">
-          <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 className="text-4xl font-serif text-center text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-16">Event Timeline</h2>
-            <div className="relative border-l-[3px] border-[#d4af37]/30 ml-6 space-y-16 pb-4">
-              {[
-                { time: "පෙ.ව. 10:00", title: "පැමිණීම", desc: "මනමාල මහතාගේ පැමිණීම" },
-                { time: "පෙ.ව. 10:45", title: "පෝරුවේ චාරිත්‍ර", desc: "සාම්ප්‍රදායික පෝරුවේ චාරිත්‍ර වාරිත්‍ර" },
-                { time: "ප.ව. 12:00", title: "නර්තන හා ආශිර්වාද", desc: "සම්ප්‍රදායික නර්තන හා ආශිර්වාද ගැන්වීම" },
-                { time: "ප.ව. 01:00", title: "දිවා ආහාරය", desc: "ප්‍රධාන භෝජන සංග්‍රහය" },
-                { time: "ප.ව. 04:00", title: "පිටවීම", desc: "නව යුවළ පිටත්ව යාම" }
-              ].map((event, index) => (
-                <motion.div key={index} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} className="relative pl-12 group">
-                  <div className="absolute -left-[14px] top-1 w-6 h-6 rounded-full bg-black border-[4px] border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.8)] group-hover:scale-125 transition-transform duration-300"></div>
-                  <h4 className="text-[11px] text-white/90 font-bold tracking-[0.2em] mb-3 flex items-center gap-2 bg-[#d4af37]/20 border border-[#d4af37]/40 w-max px-4 py-1.5 rounded-full shadow-lg backdrop-blur-sm"><Clock size={12} className="text-[#d4af37]"/> {event.time}</h4>
-                  <h3 className="text-2xl font-serif text-white mb-2">{event.title}</h3>
-                  <p className="text-sm text-white/60 leading-relaxed font-light">{event.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-
         {/* --- MAP & CALENDAR --- */}
         <section className="py-24 px-8 text-center relative z-10 bg-black/40 backdrop-blur-lg border-y border-white/10">
           <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 className="text-4xl font-serif text-white mb-4">Venue</h2>
-            <p className="text-[#d4af37] text-sm mb-12 font-bold uppercase tracking-widest">Hilton Colombo, Sri Lanka</p>
+            <p className="text-[#d4af37] text-sm mb-2 font-bold uppercase tracking-widest">Shiney Lake Side, Hikkaduwa</p>
+            <p className="text-white/80 text-xs mb-12 uppercase tracking-widest">6:00 PM to 11:00 PM</p>
             
             <button onClick={() => setIsMapOpen(!isMapOpen)} className="flex items-center justify-center gap-3 w-full mx-auto py-5 bg-transparent border-[2px] border-[#d4af37] text-[#d4af37] rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#d4af37] hover:text-black transition-all duration-300 mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
               <MapIcon size={18} /> {isMapOpen ? 'Hide Map' : 'Show Map'}
