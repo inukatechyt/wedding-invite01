@@ -195,7 +195,7 @@ export default function App() {
             
             <motion.div whileHover={{ scale: 1.02 }} className="w-full max-w-[280px] mx-auto mb-12 relative group">
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="absolute -inset-2 bg-gradient-to-tr from-[#d4af37] to-transparent rounded-[2.5rem] blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></motion.div>
-              <img src="/slcouple.jpg" alt="Couple" className="w-full h-auto relative z-10 rounded-[2rem] border-[4px] border-white/20 shadow-2xl" />
+              <img src="/slcouple2.jpg" alt="Couple" className="w-full h-auto relative z-10 rounded-[2rem] border-[4px] border-white/20 shadow-2xl" />
             </motion.div>
 
             <h1 className="text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-2 tracking-wider">Tharindu</h1>
