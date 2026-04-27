@@ -50,8 +50,15 @@ const PalaceGate = ({ onOpen }) => (
     <motion.div exit={{ scale: 0, opacity: 0, transition: { duration: 0.6, ease: "backIn" } }} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
       <button onClick={onOpen} className="relative group w-44 h-44 flex flex-col items-center justify-center bg-gradient-to-br from-[#2c1a12] to-[#1a0f0a] rounded-full shadow-[0_0_80px_rgba(212,175,55,0.6)] border-[4px] border-[#d4af37] cursor-pointer hover:scale-110 transition-all duration-500 overflow-hidden">
         <motion.div animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[2px] border-dashed border-[#d4af37]/50 rounded-full scale-90"></motion.div>
-        <h2 className="text-3xl font-serif text-[#d4af37] font-bold z-10 mb-1 drop-shadow-lg">T <span className="text-white text-xl">&</span> P</h2>
-        <p className="text-white/80 uppercase tracking-[0.3em] text-[9px] font-bold z-10 mt-4 flex items-center gap-1 animate-pulse">
+        
+        {/* Updated Names */}
+        <h2 className="text-xl font-serif text-[#d4af37] font-bold z-10 mb-1 drop-shadow-lg text-center leading-tight">
+          Tharindu <br/>
+          <span className="text-white text-sm">&</span> <br/>
+          Paboda
+        </h2>
+        
+        <p className="text-white/80 uppercase tracking-[0.3em] text-[9px] font-bold z-10 mt-3 flex items-center gap-1 animate-pulse">
           <Sparkles size={12} className="text-[#d4af37]" /> Enter
         </p>
       </button>
@@ -74,7 +81,35 @@ const FlipUnit = ({ value, label }) => (
   </motion.div>
 );
 
-// --- 5. MAIN APP COMPONENT ---
+// --- 5. HOTEL IMAGE CAROUSEL ---
+const VenueCarousel = () => {
+  const images = ["/hotel1.jpg", "/hotel2.jpg", "/hotel3.jpg"];
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => setIdx((p) => (p === images.length - 1 ? 0 : p + 1)), 3000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="relative w-full max-w-[320px] mx-auto h-[200px] mb-10 rounded-[2rem] overflow-hidden shadow-[0_0_30px_rgba(212,175,55,0.2)] border-[2px] border-[#d4af37]/30 bg-black/50">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={idx}
+          src={images[idx]}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+    </div>
+  );
+};
+
+// --- 6. MAIN APP COMPONENT ---
 export default function App() {
   const [isGateOpen, setIsGateOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -204,8 +239,11 @@ export default function App() {
           <motion.div variants={fadeUpBounce} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 className="text-4xl font-serif text-white mb-4">Venue</h2>
             <p className="text-[#d4af37] text-sm mb-2 font-bold uppercase tracking-widest">Shiney Lake Side, Hikkaduwa</p>
-            <p className="text-white/80 text-[11px] mb-12 uppercase tracking-widest font-bold">6:00 PM to 11:00 PM</p>
+            <p className="text-white/80 text-[11px] mb-8 uppercase tracking-widest font-bold">6:00 PM to 11:00 PM</p>
             
+            {/* Added Hotel Carousel here */}
+            <VenueCarousel />
+
             <button onClick={() => setIsMapOpen(!isMapOpen)} className="flex items-center justify-center gap-3 w-full mx-auto py-5 bg-transparent border-[2px] border-[#d4af37] text-[#d4af37] rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#d4af37] hover:text-black transition-all duration-300 mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
               <MapIcon size={18} /> {isMapOpen ? 'Hide Map' : 'Show Map'}
             </button>
@@ -235,7 +273,7 @@ export default function App() {
           <p className="text-[10px] text-white/40 uppercase tracking-widest mb-4 font-bold">© 2026 All rights reserved by Tharindu & Paboda</p>
           <div className="flex items-center justify-center gap-2 text-[10px] text-white/50">
             <span>Powered By</span>
-            <a href="inukatechyt.github.io/inuka_tech/" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
+            <a href="https://inukatech.com" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
               Inuka Tech
             </a>
           </div>
