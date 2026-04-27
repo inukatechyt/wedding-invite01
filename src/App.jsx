@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Calendar, Map as MapIcon, Sparkles, Star } from 'lucide-react';
+import { MapPin, Calendar, Map as MapIcon, Sparkles, Star, Volume2, VolumeX } from 'lucide-react';
 
 // --- 1. TRADITIONAL SRI LANKAN LOTUS MOTIF (සාම්ප්‍රදායික මෝස්තරය) ---
 const TraditionalLotus = ({ className }) => (
@@ -80,6 +80,11 @@ export default function App() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [guestName, setGuestName] = useState('Our Beloved Guest'); 
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  // Google Calendar URL Generator (Times converted to UTC for standard compatibility)
+  const calendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tharindu+%26+Paboda's+Wedding&dates=20260516T123000Z/20260516T173000Z&details=Join+us+to+celebrate+our+special+day!&location=Shiney+Lake+Side,+Hikkaduwa";
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -98,6 +103,22 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleEnterGate = () => {
+    setIsGateOpen(true);
+    if (audioRef.current) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(err => console.log("Audio play blocked by browser", err));
+    }
+  };
+
+  const toggleAudio = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   const fadeUpBounce = {
     hidden: { opacity: 0, y: 80, scale: 0.95 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1, type: "spring", bounce: 0.4 } }
@@ -107,8 +128,24 @@ export default function App() {
     <div className="bg-[#0f0c0a] min-h-screen font-sans flex justify-center text-white selection:bg-[#d4af37] selection:text-black">
       <AnimatedBackground />
 
+      {/* Background Audio Element */}
+      <audio ref={audioRef} src="/wedding-song.mp3" loop />
+
+      {/* Floating Audio Toggle Button */}
+      {isGateOpen && (
+        <motion.button 
+          initial={{ opacity: 0, scale: 0 }} 
+          animate={{ opacity: 1, scale: 1 }} 
+          transition={{ delay: 2 }}
+          onClick={toggleAudio} 
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-black/50 backdrop-blur-md border border-[#d4af37]/50 rounded-full flex items-center justify-center text-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:bg-[#d4af37]/20 transition-all"
+        >
+          {isPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
+        </motion.button>
+      )}
+
       <AnimatePresence>
-        {!isGateOpen && <PalaceGate onOpen={() => setIsGateOpen(true)} />}
+        {!isGateOpen && <PalaceGate onOpen={handleEnterGate} />}
       </AnimatePresence>
 
       <div className="w-full max-w-[420px] min-h-screen relative overflow-x-hidden border-x border-white/5 shadow-[0_0_100px_rgba(0,0,0,1)] bg-black/20 backdrop-blur-[2px]">
@@ -173,7 +210,7 @@ export default function App() {
               <MapIcon size={18} /> {isMapOpen ? 'Hide Map' : 'Show Map'}
             </button>
 
-            <a href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-white text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-gray-200 transition-all duration-300 mb-10 shadow-xl">
+            <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-white text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-gray-200 transition-all duration-300 mb-10 shadow-xl">
               <Calendar size={18} /> Add to Calendar
             </a>
 
@@ -181,9 +218,9 @@ export default function App() {
               {isMapOpen && (
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                   <div className="w-full h-80 bg-gray-900 rounded-[2.5rem] overflow-hidden shadow-2xl mb-8 border-[4px] border-white/10">
-                    <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.180406262559!2d80.120125!3d6.141064000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae177f4ae6181e5%3A0x503df9178e3d00d2!2sShiny%20Lakeside%20Resort!5e1!3m2!1sen!2slk!4v1777284778018!5m2!1sen!2slk" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
+                    <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.676646872583!2d79.84157157500588!3d6.929215093069818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25925a259b1db%3A0xc6bf31b87b7a2d61!2sHilton%20Colombo!5e0!3m2!1sen!2slk!4v1714018800000!5m2!1sen!2slk" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
                   </div>
-                  <a href="https://maps.app.goo.gl/xVpkWZSgABVgdAmeA" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-gradient-to-r from-[#d4af37] to-[#aa7c11] text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 mb-4">
+                  <a href="https://maps.app.goo.gl/placeholderlink" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-gradient-to-r from-[#d4af37] to-[#aa7c11] text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 mb-4">
                     <MapPin size={18} /> Open in Google Maps
                   </a>
                 </motion.div>
@@ -198,7 +235,7 @@ export default function App() {
           <p className="text-[10px] text-white/40 uppercase tracking-widest mb-4 font-bold">© 2026 All rights reserved by Tharindu & Paboda</p>
           <div className="flex items-center justify-center gap-2 text-[10px] text-white/50">
             <span>Powered By</span>
-            <a href="https://inukatechyt.github.io/inuka_tech/" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
+            <a href="https://inukatech.com" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
               Inuka Tech
             </a>
           </div>
