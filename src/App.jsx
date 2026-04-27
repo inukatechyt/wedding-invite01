@@ -181,9 +181,9 @@ export default function App() {
               {isMapOpen && (
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                   <div className="w-full h-80 bg-gray-900 rounded-[2.5rem] overflow-hidden shadow-2xl mb-8 border-[4px] border-white/10">
-                    <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.676646872583!2d79.84157157500588!3d6.929215093069818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25925a259b1db%3A0xc6bf31b87b7a2d61!2sHilton%20Colombo!5e0!3m2!1sen!2slk!4v1714018800000!5m2!1sen!2slk" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
+                    <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.180406262559!2d80.120125!3d6.141064000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae177f4ae6181e5%3A0x503df9178e3d00d2!2sShiny%20Lakeside%20Resort!5e1!3m2!1sen!2slk!4v1777284778018!5m2!1sen!2slk" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
                   </div>
-                  <a href="https://maps.app.goo.gl/placeholderlink" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-gradient-to-r from-[#d4af37] to-[#aa7c11] text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 mb-4">
+                  <a href="https://maps.app.goo.gl/xVpkWZSgABVgdAmeA" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 bg-gradient-to-r from-[#d4af37] to-[#aa7c11] text-black rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 mb-4">
                     <MapPin size={18} /> Open in Google Maps
                   </a>
                 </motion.div>
@@ -198,7 +198,7 @@ export default function App() {
           <p className="text-[10px] text-white/40 uppercase tracking-widest mb-4 font-bold">© 2026 All rights reserved by Tharindu & Paboda</p>
           <div className="flex items-center justify-center gap-2 text-[10px] text-white/50">
             <span>Powered By</span>
-            <a href="https://inukatech.com" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
+            <a href="https://inukatechyt.github.io/inuka_tech/" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
               Inuka Tech
             </a>
           </div>
