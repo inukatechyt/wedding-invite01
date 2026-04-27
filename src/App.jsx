@@ -171,9 +171,9 @@ export default function App() {
               <img src="/slcouple.jpg" alt="Couple" className="w-full h-auto relative z-10 rounded-[2rem] border-[4px] border-white/20 shadow-2xl" />
             </motion.div>
 
-            <h1 className="text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-2 tracking-wider">Suranga</h1>
+            <h1 className="text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-2 tracking-wider">Tharindu</h1>
             <p className="text-[#d4af37] text-md font-serif mb-2 italic">සහ</p>
-            <h1 className="text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-10 tracking-wider">Chamila</h1>
+            <h1 className="text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white to-[#d4af37] mb-10 tracking-wider">Paboda</h1>
             
             <div className="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 inline-block">
               <p className="text-white tracking-[0.3em] text-[12px] font-bold uppercase">May 09 . 2026</p>
@@ -190,7 +190,7 @@ export default function App() {
                 අපගේ ජීවිතයේ සුන්දරම පරිච්ඡේදය ආරම්භ වන මේ සුවිශේෂී දිනයේ, අපගේ ආදරණීයයන් වන ඔබ සැමගේ ආශිර්වාදය අපට මහත් සතුටකි.
               </p>
               <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-8"></div>
-              <h3 className="font-serif text-2xl text-[#d4af37]">Suranga & Chamila</h3>
+              <h3 className="font-serif text-2xl text-[#d4af37]">Tharindu & Paboda</h3>
            </motion.div>
         </section>
 
@@ -364,7 +364,7 @@ export default function App() {
         {/* --- FOOTER --- */}
         <footer className="py-12 px-6 text-center bg-black z-10 relative border-t border-white/10">
           <TraditionalLotus className="mx-auto w-8 h-8 text-[#d4af37]/50 mb-4" />
-          <p className="text-[10px] text-white/40 uppercase tracking-widest mb-4 font-bold">© 2026 All rights reserved by Suranga & Chamila</p>
+          <p className="text-[10px] text-white/40 uppercase tracking-widest mb-4 font-bold">© 2026 All rights reserved by Tharindu & Paboda</p>
           <div className="flex items-center justify-center gap-2 text-[10px] text-white/50">
             <span>Powered By</span>
             <a href="https://inukatech.com" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] font-bold tracking-widest uppercase flex items-center gap-1 bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 hover:bg-[#d4af37]/20 transition-colors">
